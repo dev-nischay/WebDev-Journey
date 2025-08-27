@@ -2,6 +2,7 @@ import React, { useState,useEffect,useRef } from 'react';
 import { Grid, List, Search, Share, MoreHorizontal, Menu, Heart, Star, Clock, Gift } from 'lucide-react';
 import {useWishListStore,displayItems} from "../store/wishlistStore.js"
 import { addToCart ,useCartStore} from '../store/cartStore.js';
+import {v4 as uuidv4} from "uuid"
 
 
 
@@ -13,7 +14,7 @@ export default () => {
   
 
 const products = useWishListStore((state) => state.wishList);
-const cart = useCartStore((state) => state.cart);
+
 
   useEffect(() => {
       displayItems()
@@ -40,10 +41,12 @@ const triggerTool = () => {
 
 const handleChange = (product) => {
   let obj ={
+      id:uuidv4(),
       title:product.title,
       image:product.image,
       price:product.price,
-      rating:product.rating.rate
+      rating:product.rating.rate,
+      quantity:1
   }
     addToCart(obj)
 
