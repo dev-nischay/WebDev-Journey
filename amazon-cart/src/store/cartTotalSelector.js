@@ -1,29 +1,28 @@
 import { useCartStore } from "./cartStore.js";
 
-let currentProducts = useCartStore((products) =>
-  products.cart.map((e) => {
-    return { price: e.price, quantity: e.quantity };
-  })
-);
+  // const useFullName = () => useStore((state) => `${state.firstName} ${state.lastName}`);
 
-// [{price:1,quantity:1},{price:2},{price:3},{price:2093},{price:2093},{price:2093},{price:2093},{price:2093},{price:2093}]
-
-// console.log(currentProducts)  make sure that the currentProducts look like the array above
+  //   function MyComponent() {
+  //     const fullName = useFullName();
+  //     return <div>{fullName}</div>;
+  //   }
 
 
-let checkOut = {
-  totalPrice: 0,
-  totalQuantity: 0,
-};
+  // const useTotalCart = useCartStore((state) => state.cart.map((e) => 
+  //   e.price,
+  //   e.quantity
+  // ))
 
-currentProducts.forEach((element) => {
-  checkOut.totalPrice += element.price;
-  checkOut.totalQuantity += element.quantity;
-});
+// // utils/checkout.js
+// export function calculateCheckout(cart) {
+//   return cart.reduce(
+//     (acc, item) => {
+//       acc.finalPrice += item.price * item.quantity;
+//       acc.finalQuantity += item.quantity;
+//       return acc;
+//     },
+//     { finalPrice: 0, finalQuantity: 0 }
+//   );
+// }
 
-console.log(checkOut);
 
-// convert this into reduce later
-
-
-export const FinalTotal = checkOut;
